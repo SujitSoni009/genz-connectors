@@ -1,0 +1,6 @@
+{
+  "name": "GenZ Connectors",
+  "description": "Context-Aware AI for Meaningful Human Connections",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

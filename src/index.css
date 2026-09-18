@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  
+  --color-primary-50: #faf5ff;
+  --color-primary-100: #f3e8ff;
+  --color-primary-500: #a855f7;
+  --color-primary-600: #9333ea;
+  --color-primary-700: #7e22ce;
+  
+  --color-secondary-400: #fb923c;
+  --color-secondary-500: #f97316;
+  --color-secondary-600: #ea580c;
+}
+
+@layer base {
+  body {
+    @apply bg-stone-50 text-stone-900;
+  }
+}
+
+@layer utilities {
+  .animated-underline {
+    @apply relative inline-block;
+  }
+  .animated-underline::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 h-[2px] w-full bg-current origin-left scale-x-0 transition-transform duration-300 ease-out;
+  }
+  .animated-underline:hover::after {
+    @apply scale-x-100;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .hover-lift {
+      @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+    }
+    .hover-glow {
+      @apply transition-all duration-300;
+    }
+    .hover-glow:hover {
+      box-shadow: 0 8px 30px rgba(147, 51, 234, 0.15);
+    }
+  }
+
+  .bg-size-200 {
+    background-size: 200% auto;
+  }
+}
+
+@keyframes ripple {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0.35; }
+  100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+}
+.animate-ripple {
+  animation: ripple 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
